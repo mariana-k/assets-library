@@ -11,7 +11,7 @@ import H1 from '@/components/H1/H1'
 import H2 from '@/components/H2/H2'
 import H3 from '@/components/H3/H3'
 import H4 from '@/components/H4/H4'
-import Container from '@/components/Container/Containder'
+import Container from '@/components/Container/Container'
 import { makeAssetTypesStrings } from './Assets.constants'
 
 function AssetsListContainer() {
@@ -25,9 +25,9 @@ function AssetsListContainer() {
 
     useEffect(() => {
         setFilteredAssets(filterAssets(assets, filterProperty, searchTerm))
-    }, [filterProperty])
+    }, [filterProperty, searchTerm, assets])
+
     const handleSearch = (query: string) => {
-        setFilteredAssets(filterAssets(assets, filterProperty, query))
         setSearchTerm(query)
     }
 

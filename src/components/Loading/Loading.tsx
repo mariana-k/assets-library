@@ -1,6 +1,6 @@
 import React from 'react'
-import { TLoadingProps } from '@/components/Loading/Loading.types'
-import { LoadingStyles } from '@/components/Loading/Loading.styles'
+import { TLoadingProps } from './Loading.types'
+import { LoadingStyles } from './Loading.styles'
 
 const Loading: React.FC<TLoadingProps> = ({ children, dataTestId }) => {
     return (
