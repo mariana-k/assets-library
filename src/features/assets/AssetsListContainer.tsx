@@ -1,12 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectAllAssets } from '@/features/assets/assetsSlice'
 import AssetsList from '@/features/assets/components/AssetsList/AssetsList'
 import Search from '@/components/Search/Search'
-import {
-    filterAssetsBySearchTerm,
-    filterAssetsByType,
-} from '@/features/assets/Assets.utils'
+import { filterAssets } from '@/features/assets/Assets.utils'
 import { TAsset } from '@/features/assets/Assets.types'
 import FilterTabs from '@/components/FilterTabs/FilterTabs'
 import { useTranslation } from 'next-i18next'
@@ -15,46 +12,35 @@ import H2 from '@/components/H2/H2'
 import H3 from '@/components/H3/H3'
 import H4 from '@/components/H4/H4'
 import Container from '@/components/Container/Containder'
+import { makeAssetTypesStrings } from './Assets.constants'
 
 function AssetsListContainer() {
     const { t } = useTranslation(['common'])
-    const ASSET_TYPES = [
-        {
-            title: t('asset-type-featured'),
-            subtitle: t('asset-type-featured-subtilte'),
-        },
-        { title: t('asset-type-kpi'), subtitle: t('asset-type-kpi-subtilte') },
-        {
-            title: t('asset-type-layouts'),
-            subtitle: t('asset-type-layouts-subtilte'),
-        },
-        {
-            title: t('asset-type-storyboards'),
-            subtitle: t('asset-type-fstoryboards-subtilte'),
-        },
-    ]
+    const ASSET_TYPES = makeAssetTypesStrings(t)
     const assets = useSelector(selectAllAssets)
-    const [searchTerm, setSearchTerm] = React.useState('')
-    const [filteredAssets, setFilteredAssets] = React.useState<TAsset[]>([])
-    const [filterProperty, setFilterProperty] =
-        React.useState<string>('Featured')
+    const [searchTerm, setSearchTerm] = useState<string>('')
+
+    const [filteredAssets, setFilteredAssets] = useState<TAsset[]>([])
+    const [filterProperty, setFilterProperty] = useState<string>('Featured')
 
     useEffect(() => {
-        setFilteredAssets(filterAssetsBySearchTerm(assets, searchTerm))
-    }, [searchTerm])
-    useEffect(() => {
-        setFilteredAssets(filterAssetsByType(assets, filterProperty))
+        setFilteredAssets(filterAssets(assets, filterProperty, searchTerm))
     }, [filterProperty])
+    const handleSearch = (query: string) => {
+        setFilteredAssets(filterAssets(assets, filterProperty, query))
+        setSearchTerm(query)
+    }
+
     return (
         <Container>
             <H1>{t('app-title')}</H1>
             <H3>{t('app-subtitle')}</H3>
-            <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+            <Search onSearch={handleSearch} />
             <FilterTabs
                 filterProperties={ASSET_TYPES}
                 setFilterProperty={setFilterProperty}
             />
-            <H2>{filterProperty}</H2>
+            <H2>{t(`asset-type-${filterProperty.toLowerCase()}`)}</H2>
             <H4>{t(`asset-type-${filterProperty.toLowerCase()}-subtilte`)}</H4>
             <AssetsList assets={filteredAssets} />
         </Container>

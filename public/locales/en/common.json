@@ -8,5 +8,6 @@
     "asset-type-featured-subtilte": "Currated top picks from this week",
     "asset-type-kpi-subtilte": "Currated kpis from this week",
     "asset-type-layouts-subtilte": "Currated layouts from this week",
-    "asset-type-storyboards-subtilte": "Currated storyboards from this week"
+    "asset-type-storyboards-subtilte": "Currated storyboards from this week",
+    "loading-asset-details": "Loading asset details..."
 }

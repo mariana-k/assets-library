@@ -8,3 +8,7 @@ export type TAsset = {
 export type TAssets = {
     assets: TAsset[]
 }
+export type TAssetType = {
+    title: string
+    subtitle: string
+}

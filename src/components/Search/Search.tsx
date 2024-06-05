@@ -1,6 +1,40 @@
 import { TSearchProps } from '@/components/Search/Search.types'
+import { debounce } from 'lodash'
+import {
+    ChangeEvent,
+    MouseEventHandler,
+    useCallback,
+    useEffect,
+    useState,
+} from 'react'
 
-const Search: React.FC<TSearchProps> = ({ searchTerm, setSearchTerm }) => {
+const Search: React.FC<TSearchProps> = ({ onSearch }) => {
+    const [searchTerm, setSearchTerm] = useState('')
+    const [searchHistory, setSearchHistory] = useState<string[]>([])
+
+    const debouncedSearch = useCallback(
+        debounce((query) => {
+            onSearch(query)
+            setSearchHistory((prev) => {
+                const historySet = new Set([...prev, query])
+                return Array.from(historySet)
+            })
+        }, 500),
+        []
+    )
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+        const value = (e.target as HTMLInputElement).value
+        setSearchTerm(value)
+        debouncedSearch(value)
+    }
+    const handleSearchFromHistory = (
+        e: React.MouseEvent<HTMLButtonElement>
+    ) => {
+        const value = (e.target as HTMLButtonElement).value
+        setSearchTerm(value)
+        debouncedSearch(value)
+    }
+
     return (
         <div className="mb-3 xl:w-96">
             <input
@@ -9,8 +43,20 @@ const Search: React.FC<TSearchProps> = ({ searchTerm, setSearchTerm }) => {
                 id="exampleSearch"
                 placeholder="Type query"
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleChange}
             />
+            <div className="flex flex-wrap gap-2">
+                {searchHistory.map((history: string) => (
+                    <button
+                        key={history}
+                        value={history}
+                        className="text-sm text-neutral-500 bg-neutral-100 px-2 py-1 rounded"
+                        onClick={handleSearchFromHistory}
+                    >
+                        {history}
+                    </button>
+                ))}
+            </div>
         </div>
     )
 }

@@ -16,6 +16,13 @@ const initialState = [
         type: 'KPI',
         image: 'https://placehold.co/150',
     },
+    {
+        id: '3',
+        title: 'Title 3',
+        content: 'Content 3',
+        type: 'Featured',
+        image: 'https://placehold.co/150',
+    },
 ]
 
 const assetsSlice = createSlice({

@@ -1,17 +1,22 @@
 import Card from '@/components/Card/Card'
 import H6 from '@/components/H6/H6'
 import { TAsset } from '@/features/assets/Assets.types'
+import {
+    AssetItemWrapperStyles,
+    AssetItemImageStyles,
+    AssetItemContentStyles,
+} from './AssetItem.styles'
 
 const AssetItem: React.FC<{ asset: TAsset }> = ({ asset }) => {
     return (
         <Card key={asset.id}>
-            <div className="flex">
+            <div className={AssetItemWrapperStyles}>
                 <img
-                    className="flex-none w-14 block mr-4 rounded-md"
+                    className={AssetItemImageStyles}
                     src={asset.image}
                     alt={asset.title}
                 />
-                <div className="flex-1">
+                <div className={AssetItemContentStyles}>
                     <H6>{asset.title}</H6>
                     <p>{asset.content}</p>
                 </div>
