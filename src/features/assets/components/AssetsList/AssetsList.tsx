@@ -1,7 +1,7 @@
 import { TAsset } from '@/features/assets/Assets.types'
 import AssetItem from '@/features/assets/components/AssetItem/AssetItem'
 import { AssetsListStyles } from '@/features/assets/components/AssetsList/AssetsList.styles'
-import { FC, Suspense, lazy, useState } from 'react'
+import React, { FC, Suspense, lazy, useState } from 'react'
 
 import Loading from '@/components/Loading/Loading'
 import { useTranslation } from 'next-i18next'

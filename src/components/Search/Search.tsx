@@ -1,14 +1,9 @@
+import React, { FC } from 'react'
 import { TSearchProps } from '@/components/Search/Search.types'
 import { debounce } from 'lodash'
-import {
-    ChangeEvent,
-    MouseEventHandler,
-    useCallback,
-    useEffect,
-    useState,
-} from 'react'
+import { ChangeEvent, useCallback, useState } from 'react'
 
-const Search: React.FC<TSearchProps> = ({ onSearch }) => {
+const Search: FC<TSearchProps> = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('')
     const [searchHistory, setSearchHistory] = useState<string[]>([])
 

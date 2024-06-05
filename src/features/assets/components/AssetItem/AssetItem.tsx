@@ -1,3 +1,4 @@
+import React, { FC } from 'react'
 import Card from '@/components/Card/Card'
 import H6 from '@/components/H6/H6'
 import { TAsset } from '@/features/assets/Assets.types'
@@ -7,7 +8,7 @@ import {
     AssetItemContentStyles,
 } from './AssetItem.styles'
 
-const AssetItem: React.FC<{ asset: TAsset }> = ({ asset }) => {
+const AssetItem: FC<{ asset: TAsset }> = ({ asset }) => {
     return (
         <Card key={asset.id}>
             <div className={AssetItemWrapperStyles}>

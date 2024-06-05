@@ -1,7 +1,8 @@
+import React, { FC } from 'react'
 import { TFilterTabsProps } from '@/components/FilterTabs/FilterTabs.types'
 import TabButton from '../TabButton/TabButton'
 
-const FilterTabs: React.FC<TFilterTabsProps> = ({
+const FilterTabs: FC<TFilterTabsProps> = ({
     filterProperties,
     setFilterProperty,
 }) => {
