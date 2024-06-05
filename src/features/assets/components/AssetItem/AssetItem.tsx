@@ -6,7 +6,7 @@ import {
     AssetItemWrapperStyles,
     AssetItemImageStyles,
     AssetItemContentStyles,
-} from './AssetItem.styles'
+} from '@/features/assets/components/AssetItem/AssetItem.styles'
 import { useTranslation } from 'next-i18next'
 import Loading from '@/components/Loading/Loading'
 import AssetItemDetails from '@/features/assets/components/AssetItemDetails/AssetItemDetails'
@@ -20,7 +20,7 @@ const AssetItem: FC<{ asset: TAsset }> = ({ asset }) => {
     const hidePopup = () => setIsOpen(false)
 
     return (
-        <div>
+        <>
             <div onClick={showPopup}>
                 <Card key={asset.id}>
                     <div className={AssetItemWrapperStyles}>
@@ -44,7 +44,7 @@ const AssetItem: FC<{ asset: TAsset }> = ({ asset }) => {
                     <AssetItemDetails itemId={asset.id} />
                 </Popup>
             </Suspense>
-        </div>
+        </>
     )
 }
 

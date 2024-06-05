@@ -1,1 +1,1 @@
-export const AssetsListStyles = 'grid grid-cols-1 gap-4'
+export const AssetsListStyles = 'grid grid-cols-2 gap-2'

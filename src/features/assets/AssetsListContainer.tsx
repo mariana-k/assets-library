@@ -21,7 +21,9 @@ function AssetsListContainer() {
     const [searchTerm, setSearchTerm] = useState<string>('')
 
     const [filteredAssets, setFilteredAssets] = useState<TAsset[]>([])
-    const [filterProperty, setFilterProperty] = useState<string>('Featured')
+    const [filterProperty, setFilterProperty] = useState<string>(
+        t(`asset-type-featured`)
+    )
 
     useEffect(() => {
         setFilteredAssets(filterAssets(assets, filterProperty, searchTerm))
