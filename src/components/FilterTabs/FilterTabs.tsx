@@ -8,6 +8,8 @@ const FilterTabs: FC<TFilterTabsProps> = ({
     setFilterProperty,
     activeFilterProperty,
 }) => {
+    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
+        setFilterProperty((e.target as HTMLButtonElement).value)
     return (
         <div className={FilterTabsStyles}>
             {filterProperties.map((filterProperty) => (
@@ -15,11 +17,7 @@ const FilterTabs: FC<TFilterTabsProps> = ({
                     isActive={activeFilterProperty === filterProperty.id}
                     key={filterProperty.title}
                     value={filterProperty.id}
-                    onClick={(
-                        e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-                    ) =>
-                        setFilterProperty((e.target as HTMLButtonElement).value)
-                    }
+                    onClick={handleClick}
                 >
                     {filterProperty.title}
                 </TabButton>

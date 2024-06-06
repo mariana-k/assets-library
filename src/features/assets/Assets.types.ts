@@ -5,6 +5,7 @@ export type TAsset = {
     type: string
     image: string
     date: string
+    isTrending: boolean
 }
 export type TAssets = {
     assets: TAsset[]

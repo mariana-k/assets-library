@@ -5,12 +5,15 @@
     "asset-type-kpi": "KPI",
     "asset-type-layouts": "Layouts",
     "asset-type-storyboards": "Storyboards",
-    "asset-type-featured-subtilte": "Currated top picks from this week",
-    "asset-type-kpi-subtilte": "Currated kpis from this week",
-    "asset-type-layouts-subtilte": "Currated layouts from this week",
-    "asset-type-storyboards-subtilte": "Currated storyboards from this week",
+    "asset-type-featured-subtitle": "Currated top picks from this week",
+    "asset-type-kpi-subtitle": "Currated kpis from this week",
+    "asset-type-layouts-subtitle": "Currated layouts from this week",
+    "asset-type-storyboards-subtitle": "Currated storyboards from this week",
     "loading-assets": "Loading assets...",
     "loading-asset-details": "Loading asset details...",
     "search-placeholder": "Type to search...",
-    "error-message": "An error occurred while loading the data. Please try again later."
+    "error-message": "An error occurred while loading the data. Please try again later.",
+    "trending-assets-section-title": "Trending",
+    "trending-assets-section-subtitle": "Most popular by community",
+    "request-button-text": "Request"
 }
