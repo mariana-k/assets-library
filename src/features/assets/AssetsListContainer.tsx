@@ -10,8 +10,8 @@ import H1 from '@/components/H1/H1'
 import H3 from '@/components/H3/H3'
 import Container from '@/components/Container/Container'
 import { makeAssetTypesStrings } from './Assets.constants'
-import AssetsListSection from './sections/AssetsListSection/AssetsListSection'
-import Button from '@/components/Button/Button'
+import AssetsListSection from '@/features/assets/sections/AssetsListSection/AssetsListSection'
+import RequestAssetSection from '@/features/assets/sections/RequestAssetSection/RequestAssetSection'
 
 const AssetsListContainer = () => {
     const { t } = useTranslation(['common'])
@@ -29,13 +29,9 @@ const AssetsListContainer = () => {
         setSearchTerm(query)
     }
 
-    const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>
-        console.log((e.target as HTMLButtonElement).value)
     return (
         <Container>
-            <Button onClick={handleClick} value={t('request-button-text')}>
-                {t('request-button-text')}
-            </Button>
+            <RequestAssetSection />
             <H1>{t('app-title')}</H1>
             <H3>{t('app-subtitle')}</H3>
             <Search onSearch={handleSearch} />
