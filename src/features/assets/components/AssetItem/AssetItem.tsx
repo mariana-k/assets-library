@@ -45,7 +45,11 @@ const AssetItem: FC<{ asset: TAsset }> = ({ asset }) => {
                 </Card>
             </div>
 
-            <Popup isOpen={isOpen} onClose={hidePopup}>
+            <Popup
+                isOpen={isOpen}
+                onClose={hidePopup}
+                title={t('asset-details-title')}
+            >
                 <AssetItemDetails itemId={asset.id} />
             </Popup>
         </Suspense>

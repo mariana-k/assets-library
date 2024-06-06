@@ -37,7 +37,7 @@ const RequestAssetSection = () => {
 
     return (
         <div className={RequestAssetSectionStyles}>
-            <Button onClick={showPopup} value={t('request-button-text')}>
+            <Button onClick={showPopup} type="secondary">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -73,7 +73,7 @@ const RequestAssetSection = () => {
                         </option>
                     ))}
                 </Select>
-                <Button value={''} onClick={handleRequest}>
+                <Button onClick={handleRequest} type="primary">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"

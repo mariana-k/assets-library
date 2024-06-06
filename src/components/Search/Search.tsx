@@ -17,6 +17,7 @@ const Search: FC<TSearchProps> = ({ onSearch }) => {
     const [searchTerm, setSearchTerm] = useState('')
     const [searchHistory, setSearchHistory] = useState<string[]>([])
     const minimumSearchLength = 5
+
     const debouncedSearch = useCallback(
         debounce((query) => {
             onSearch(query)

@@ -1,6 +1,6 @@
 {
     "app-title": "Library",
-    "app-subtitle": "Browse for assets needed to report and present analysis.",
+    "app-subtitle": "Browse for assets needed to report and present analysis",
     "asset-type-featured": "Featured",
     "asset-type-kpi": "KPI",
     "asset-type-layouts": "Layouts",
@@ -19,5 +19,10 @@
     "asset-available-message": "Asset already available in your library",
     "requesting-asset-message": "Requesting asset with id: {{selectedAssetId}}",
     "available-assets-title": "Available assets:",
-    "request-assets-title": "Request assets"
+    "request-assets-title": "Request assets",
+    "save-favorite-button-text": "Favorite Item",
+    "asset-details-title": " Asset Details",
+    "favorite-assets-title": "Favorite assets:",
+    "asset-already-saved-message": "Asset already saved in your favorites",
+    "saving-favorite-asset-message": "Saving favorite asset with id: {{selectedAssetId}}"
 }

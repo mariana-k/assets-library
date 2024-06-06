@@ -33,7 +33,7 @@ describe('filterAssets', () => {
     ]
 
     it('should filter assets by type and search term', () => {
-        const filteredAssets = filterAssets(assets, 'Title', 'featured')
+        const filteredAssets = filterAssets(assets, 'Title 1', 'featured')
         expect(filteredAssets).toEqual([
             {
                 id: '1',
@@ -47,7 +47,7 @@ describe('filterAssets', () => {
         ])
     })
     it('should not filter assets if type does not match', () => {
-        const filteredAssets = filterAssets(assets, 'Title', 'sometype')
+        const filteredAssets = filterAssets(assets, 'Title 1', 'sometype')
         expect(filteredAssets).toEqual([])
     })
 
