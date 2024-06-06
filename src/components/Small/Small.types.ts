@@ -1,4 +1,4 @@
-export type TH6Props = {
+export type TSmallProps = {
     children: React.ReactNode
     className?: string
 }

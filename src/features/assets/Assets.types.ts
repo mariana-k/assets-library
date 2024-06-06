@@ -4,6 +4,7 @@ export type TAsset = {
     content: string
     type: string
     image: string
+    date: string
 }
 export type TAssets = {
     assets: TAsset[]

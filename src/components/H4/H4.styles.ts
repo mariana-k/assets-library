@@ -1,1 +1,1 @@
-export const H4Styles = 'text-xl font-bold text-left my-5'
+export const H4Styles = 'text-m font-bold text-left mb-5 mt-2 text-slate-400'

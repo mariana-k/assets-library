@@ -6,14 +6,19 @@ import {
 } from '@/components/TabButton/TabButton.styles'
 import { TTabButtonProps } from '@/components/TabButton/TabButton.types'
 
-const TabButton: FC<TTabButtonProps> = ({ onClick, value, isActive }) => {
+const TabButton: FC<TTabButtonProps> = ({
+    children,
+    onClick,
+    value,
+    isActive,
+}) => {
     return (
         <button
             className={`${TabButtonStyles} ${isActive ? TabButtonActiveStyles : TabButtonInactiveStyles}`}
             value={value}
             onClick={onClick}
         >
-            {value}
+            {children}
         </button>
     )
 }

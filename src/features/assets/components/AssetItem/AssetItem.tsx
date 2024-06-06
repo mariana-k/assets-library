@@ -5,11 +5,14 @@ import { TAsset } from '@/features/assets/Assets.types'
 import {
     AssetItemWrapperStyles,
     AssetItemImageStyles,
+    AssetItemContentWrapperStyles,
     AssetItemContentStyles,
+    AssetItemTitleStyles,
 } from '@/features/assets/components/AssetItem/AssetItem.styles'
 import { useTranslation } from 'next-i18next'
 import Loading from '@/components/Loading/Loading'
 import AssetItemDetails from '@/features/assets/components/AssetItemDetails/AssetItemDetails'
+import Small from '@/components/Small/Small'
 
 const Popup = lazy(() => import('@/components/Popup/Popup'))
 
@@ -29,9 +32,14 @@ const AssetItem: FC<{ asset: TAsset }> = ({ asset }) => {
                             src={asset.image}
                             alt={asset.title}
                         />
-                        <div className={AssetItemContentStyles}>
-                            <H6>{asset.title}</H6>
-                            <p>{asset.content}</p>
+                        <div className={AssetItemContentWrapperStyles}>
+                            <H6 className={AssetItemTitleStyles}>
+                                {asset.title}
+                            </H6>
+                            <p className={AssetItemContentStyles}>
+                                {asset.content}
+                            </p>
+                            <Small>{asset.date}</Small>
                         </div>
                     </div>
                 </Card>
