@@ -1,8 +1,9 @@
+import { useTranslation } from 'next-i18next'
 import { useGetItemByIdQuery } from '@/services/api'
 import React, { FC } from 'react'
-import { AssetItemDetailsProps } from './AssetItemDetails.types'
+import { AssetItemDetailsProps } from '@/features/assets/components/AssetItemDetails/AssetItemDetails.types'
 import H5 from '@/components/H5/H5'
-import { useTranslation } from 'next-i18next'
+
 const ItemDetail: FC<AssetItemDetailsProps> = ({ itemId }) => {
     const { data, error, isLoading } = useGetItemByIdQuery(itemId)
     const { t } = useTranslation(['common'])

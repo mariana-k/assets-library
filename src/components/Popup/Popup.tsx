@@ -7,14 +7,15 @@ import {
     PopupHeaderStyles,
     PopupContentStyles,
 } from '@/components/Popup/Popup.styles'
-
-const Popup: React.FC<TPopupProps> = ({ children, isOpen, onClose }) => {
+import H6 from '@/components/H6/H6'
+const Popup: React.FC<TPopupProps> = ({ children, isOpen, onClose, title }) => {
     if (!isOpen) {
         return null
     }
     return createPortal(
         <div className={PopupStyles}>
             <div className={PopupHeaderStyles}>
+                <H6>{title}</H6>
                 <button onClick={onClose} className={PopupCloseButtonStyles}>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

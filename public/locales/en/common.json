@@ -15,5 +15,9 @@
     "error-message": "An error occurred while loading the data. Please try again later.",
     "trending-assets-section-title": "Trending",
     "trending-assets-section-subtitle": "Most popular by community",
-    "request-button-text": "Request"
+    "request-button-text": "Request",
+    "asset-available-message": "Asset already available in your library",
+    "requesting-asset-message": "Requesting asset with id: {{selectedAssetId}}",
+    "available-assets-title": "Available assets:",
+    "request-assets-title": "Request assets"
 }

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { selectAllAssets } from '@/features/assets/assetsSlice'
 import Search from '@/components/Search/Search'
-import { filterAssets } from '@/features/assets/Assets.utils'
+import {
+    filterAssets,
+    filterAssetsByIsTrending,
+} from '@/features/assets/Assets.utils'
 import { TAsset } from '@/features/assets/Assets.types'
 import FilterTabs from '@/components/FilterTabs/FilterTabs'
 import { useTranslation } from 'next-i18next'
@@ -20,9 +23,13 @@ const AssetsListContainer = () => {
     const [searchTerm, setSearchTerm] = useState<string>('')
     const [filteredAssets, setFilteredAssets] = useState<TAsset[]>([])
     const [filterProperty, setFilterProperty] = useState<string>('featured')
+    const [filteredTrendingAssets, setFilteredTrendingAssets] = useState<
+        TAsset[]
+    >([])
 
     useEffect(() => {
-        setFilteredAssets(filterAssets(assets, searchTerm))
+        setFilteredAssets(filterAssets(assets, searchTerm, filterProperty))
+        setFilteredTrendingAssets(filterAssetsByIsTrending(assets, searchTerm))
     }, [filterProperty, searchTerm, assets])
 
     const handleSearch = (query: string) => {
@@ -43,17 +50,13 @@ const AssetsListContainer = () => {
             <AssetsListSection
                 title={t(`asset-type-${filterProperty}`)}
                 subtitle={t(`asset-type-${filterProperty}-subtitle`)}
-                assets={filteredAssets.filter(
-                    (asset) => asset.type === filterProperty
-                )}
+                assets={filteredAssets}
             />
 
             <AssetsListSection
                 title={t('trending-assets-section-title')}
                 subtitle={t('trending-assets-section-subtitle')}
-                assets={filteredAssets.filter(
-                    (asset) => asset.isTrending === true
-                )}
+                assets={filteredTrendingAssets}
             />
         </Container>
     )

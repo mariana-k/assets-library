@@ -8,10 +8,7 @@ import { selectAllAssets } from '@/features/assets/assetsSlice'
 import { selectUser } from '@/features/user/userSlice'
 import { requestAsset } from '@/features/user/userSlice'
 import Select from '@/components/Select/Select'
-import { map } from 'lodash'
-import { TUser } from '@/features/user/User.types'
 import Small from '@/components/Small/Small'
-
 const RequestAssetSection = () => {
     const dispatch = useDispatch()
     const { t } = useTranslation(['common'])
@@ -27,22 +24,44 @@ const RequestAssetSection = () => {
     }
     const handleRequest = () => {
         if (user.availableAssets.includes(selectedAssetId)) {
-            console.log('Asset already available')
+            console.log(t('asset-available-message'))
         } else {
             dispatch(requestAsset({ assetId: selectedAssetId }))
-            console.log(`Requesting asset with id: ${selectedAssetId}`)
+            console.log(
+                t('requesting-asset-message', {
+                    selectedAssetId: selectedAssetId,
+                })
+            )
         }
-        console.log(`Available assets: ${user.availableAssets}`)
     }
 
     return (
         <div className={RequestAssetSectionStyles}>
             <Button onClick={showPopup} value={t('request-button-text')}>
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="size-6"
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    />
+                </svg>
+
                 {t('request-button-text')}
             </Button>
-            <Popup isOpen={isOpen} onClose={hidePopup}>
+            <Popup
+                isOpen={isOpen}
+                onClose={hidePopup}
+                title={t('request-assets-title')}
+            >
                 <div>
-                    <h4>Available assets:</h4>
+                    <p>{t('available-assets-title')}</p>
                     {user.availableAssets.map((assetId: string) => (
                         <Small key={assetId}>{assetId} </Small>
                     ))}
