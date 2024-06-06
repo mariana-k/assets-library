@@ -25,6 +25,7 @@ export const ASSETS = [
         type: 'featured',
         image: 'https://placehold.co/150',
         date: '06/27/2024',
+        isTrending: true,
     },
     {
         id: '4',
@@ -43,6 +44,7 @@ export const ASSETS = [
         type: 'featured',
         image: 'https://placehold.co/150',
         date: '06/27/2024',
+        isTrending: true,
     },
     {
         id: '6',
@@ -51,6 +53,7 @@ export const ASSETS = [
             'Content 6 - et iusto sed quo iure voluptatem occaecati omnis eligendi aut ad voluptatem doloribus vel accusantium quis pariatur molestiae porro eius odio et labore et velit aut. et iusto sed quo iure voluptatem occaecati omnis eligendi aut ad voluptatem doloribus vel accusantium quis pariatur molestiae porro eius odio et labore et velit aut',
         type: 'kpi',
         image: 'https://placehold.co/150',
+        isTrending: true,
     },
     {
         id: '7',

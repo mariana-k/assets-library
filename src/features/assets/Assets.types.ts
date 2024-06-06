@@ -7,7 +7,7 @@ export type TAsset = {
     date: string
     isTrending: boolean
 }
-export type TAssets = {
+export type TAssetsState = {
     assets: TAsset[]
 }
 export type TAssetType = {
