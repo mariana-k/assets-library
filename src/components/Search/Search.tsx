@@ -5,21 +5,27 @@ import { ChangeEvent, useCallback, useState } from 'react'
 import {
     SearchHistoryButtonStyles,
     SearchHistoryStyles,
+    SearchIconWrapperStyles,
     SearchInputStyles,
+    SearchInputWrapperStyles,
     SearchWrapperStyles,
 } from '@/components/Search/Search.styles'
+import { useTranslation } from 'next-i18next'
 
 const Search: FC<TSearchProps> = ({ onSearch }) => {
+    const { t } = useTranslation(['common'])
     const [searchTerm, setSearchTerm] = useState('')
     const [searchHistory, setSearchHistory] = useState<string[]>([])
-
+    const minimumSearchLength = 5
     const debouncedSearch = useCallback(
         debounce((query) => {
             onSearch(query)
-            setSearchHistory((prev) => {
-                const historySet = new Set([...prev, query])
-                return Array.from(historySet)
-            })
+            if (query.length >= minimumSearchLength) {
+                setSearchHistory((prev) => {
+                    const historySet = new Set([...prev, query])
+                    return Array.from(historySet)
+                })
+            }
         }, 500),
         []
     )
@@ -38,14 +44,32 @@ const Search: FC<TSearchProps> = ({ onSearch }) => {
 
     return (
         <div className={SearchWrapperStyles}>
-            <input
-                type="search"
-                className={SearchInputStyles}
-                id="exampleSearch"
-                placeholder="Type query"
-                value={searchTerm}
-                onChange={handleChange}
-            />
+            <div className={SearchInputWrapperStyles}>
+                <div className={SearchIconWrapperStyles}>
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        className="size-6"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                        />
+                    </svg>
+                </div>
+                <input
+                    type="search"
+                    className={SearchInputStyles}
+                    placeholder={t('search-placeholder')}
+                    value={searchTerm}
+                    onChange={handleChange}
+                />
+            </div>
+
             <div className={SearchHistoryStyles}>
                 {searchHistory.map((history: string) => (
                     <button

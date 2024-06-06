@@ -1,15 +1,18 @@
 import React, { FC } from 'react'
 import { TFilterTabsProps } from '@/components/FilterTabs/FilterTabs.types'
-import TabButton from '../TabButton/TabButton'
+import TabButton from '@/components/TabButton/TabButton'
+import { FilterTabsStyles } from '@/components/FilterTabs/FilterTabs.styles'
 
 const FilterTabs: FC<TFilterTabsProps> = ({
     filterProperties,
     setFilterProperty,
+    activeFilterProperty,
 }) => {
     return (
-        <div className="mb-3 xl:w-96">
+        <div className={FilterTabsStyles}>
             {filterProperties.map((filterProperty) => (
                 <TabButton
+                    isActive={activeFilterProperty === filterProperty.title}
                     key={filterProperty.title}
                     value={filterProperty.title}
                     onClick={(

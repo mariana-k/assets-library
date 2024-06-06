@@ -20,7 +20,7 @@ const AssetItem: FC<{ asset: TAsset }> = ({ asset }) => {
     const hidePopup = () => setIsOpen(false)
 
     return (
-        <>
+        <Suspense fallback={<Loading>{t('loading-assets')}</Loading>}>
             <div onClick={showPopup}>
                 <Card key={asset.id}>
                     <div className={AssetItemWrapperStyles}>
@@ -37,14 +37,10 @@ const AssetItem: FC<{ asset: TAsset }> = ({ asset }) => {
                 </Card>
             </div>
 
-            <Suspense
-                fallback={<Loading>{t('loading-asset-details')}</Loading>}
-            >
-                <Popup isOpen={isOpen} onClose={hidePopup}>
-                    <AssetItemDetails itemId={asset.id} />
-                </Popup>
-            </Suspense>
-        </>
+            <Popup isOpen={isOpen} onClose={hidePopup}>
+                <AssetItemDetails itemId={asset.id} />
+            </Popup>
+        </Suspense>
     )
 }
 

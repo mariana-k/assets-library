@@ -9,6 +9,7 @@ export type TAssets = {
     assets: TAsset[]
 }
 export type TAssetType = {
+    id: string
     title: string
     subtitle: string
 }

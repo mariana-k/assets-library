@@ -9,5 +9,8 @@
     "asset-type-kpi-subtilte": "Currated kpis from this week",
     "asset-type-layouts-subtilte": "Currated layouts from this week",
     "asset-type-storyboards-subtilte": "Currated storyboards from this week",
-    "loading-asset-details": "Loading asset details..."
+    "loading-assets": "Loading assets...",
+    "loading-asset-details": "Loading asset details...",
+    "search-placeholder": "Type to search...",
+    "error-message": "An error occurred while loading the data. Please try again later."
 }

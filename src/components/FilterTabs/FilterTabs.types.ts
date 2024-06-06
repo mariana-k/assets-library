@@ -6,4 +6,5 @@ export type TFilterTitles = {
 export type TFilterTabsProps = {
     filterProperties: TFilterTitles[]
     setFilterProperty: Dispatch<SetStateAction<string>>
+    activeFilterProperty: string
 }

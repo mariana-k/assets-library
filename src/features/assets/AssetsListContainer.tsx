@@ -14,16 +14,13 @@ import H4 from '@/components/H4/H4'
 import Container from '@/components/Container/Container'
 import { makeAssetTypesStrings } from './Assets.constants'
 
-function AssetsListContainer() {
+const AssetsListContainer = () => {
     const { t } = useTranslation(['common'])
     const ASSET_TYPES = makeAssetTypesStrings(t)
     const assets = useSelector(selectAllAssets)
     const [searchTerm, setSearchTerm] = useState<string>('')
-
     const [filteredAssets, setFilteredAssets] = useState<TAsset[]>([])
-    const [filterProperty, setFilterProperty] = useState<string>(
-        t(`asset-type-featured`)
-    )
+    const [filterProperty, setFilterProperty] = useState<string>('Featured')
 
     useEffect(() => {
         setFilteredAssets(filterAssets(assets, filterProperty, searchTerm))
@@ -41,6 +38,7 @@ function AssetsListContainer() {
             <FilterTabs
                 filterProperties={ASSET_TYPES}
                 setFilterProperty={setFilterProperty}
+                activeFilterProperty={filterProperty}
             />
             <H2>{t(`asset-type-${filterProperty.toLowerCase()}`)}</H2>
             <H4>{t(`asset-type-${filterProperty.toLowerCase()}-subtilte`)}</H4>

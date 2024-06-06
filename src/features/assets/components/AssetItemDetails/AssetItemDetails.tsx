@@ -2,15 +2,16 @@ import { useGetItemByIdQuery } from '@/services/api'
 import React, { FC } from 'react'
 import { AssetItemDetailsProps } from './AssetItemDetails.types'
 import H5 from '@/components/H5/H5'
+import { useTranslation } from 'next-i18next'
 const ItemDetail: FC<AssetItemDetailsProps> = ({ itemId }) => {
     const { data, error, isLoading } = useGetItemByIdQuery(itemId)
-    console.log(data)
+    const { t } = useTranslation(['common'])
     if (isLoading) {
-        return <div>Loading...</div>
+        return <div>{t('loading-asset-details')}</div>
     }
 
     if (error) {
-        return <div>Error loading item</div>
+        return <div>{t('error-message')}</div>
     }
     return (
         <div>
